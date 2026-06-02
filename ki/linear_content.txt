@@ -1,0 +1,653 @@
+Lineare Lernmaschinen
+Artificial Intelligence: Vorlesung 8 Prof. Dr. M. O. Franz, Prof. Dr. M. Blaich
+HTWG Konstanz, Fakultät für Informatik
+1 / 28
+
+Übersicht
+1 Lineare Regression 2 Logistische Regression
+2 / 28
+
+Übersicht
+1 Lineare Regression 2 Logistische Regression
+3 / 28
+
+Wiederholung: Einfaches lineares Regressionsmodell
+Modell: e Model linear regressiy^on= f(x) = fa,b(x) = ax + b
+mit Steigung a und y-Achsenabschnitt b.
+ & + - Simple Model linear regression
+slope intercept · "! = *  & + -
+­ + slope Das Modell kann als einzelnes Neuron mit 2 Inputs und l­ine,ainrtercAepkt tivierungsfunktion betrachtet werden.
+'& = 1  " + 100
+'& = 1  " + 100
+For age=75 '& = 1  75 +F1o0r 0ag=e=17755
+'& = 1  75 + 100 = 175
+4 / 28
+
+Wie findet man die besten Werte für a und b?
+
+Verlustfunktion MSE:
+
+1 MSE =
+N
+
+N
+(yi - y^i)2
+
+i=1
+
+Gesucht ist eine Lösung, die den Fehler auf dem Trainingsdatensatz
+
+minimiert:
+
+^a, ^b = arg min MSE(a, b)
+
+a,b
+
+oder allgemein
+
+^ = arg min loss().
+
+
+Für die lineare Regression gibt es eine analytische Lösung (s. Vorl. 3)
+
+a=
+
+n i=1
+
+(xi
+
+-
+
+x)
+
+·
+
+(yi
+
+-
+
+y)
+
+ni=1(xi - x)2
+
+und
+
+b = y - a · x.
+
+Allgemein ist der Gradientenabstieg eine im maschinellen Lernen sehr häufig anwendbare Methode.
+
+5 / 28
+
+Gradient Descent for one variable
+
+Eindimensionaler Gradientenabstieg
+
+·DeFrirEstinafsascuhmkee,itwheaklnboewr ntheehmopetinmwalirvaalnue, dfoarss- w=i8r7d.6e.n optimalen Wert für ^b = 87.6 bereits wissen:
+
+·
+
+loss
+Intuition for
+
+1N =graNdiein=t1d(eysic-eny^t i
+
+)2
+
+=
+
+1 N
+
+N
+(yi - (axi + 87.6))2
+i=1
+
+Have value
+
+loss(+)
+
+And gradient
+
+6loss(+) 6+
+
+Quelle: Dürr & Sick 26
+An jedem Punkt wissen wir den Wert der Verlustfunktion und ihren Gradienten, ohne den gesamten Verlauf zu kennen.
+6 / 28
+
+Gradientenabstieg: Update-Formel
+
+Der
+
+Gradient
+
+ a
+
+ist
+
+hier
+
+die
+
+Steigung
+
+a
+
+der
+
+Verlustkurve.
+
+Ist
+
+sie
+
+positiv,
+
+so
+
+soGllrteandiwenirtinDensecgeatnitv:euap-dRaicthetufnogrmgeuhlaen, bei negativer Steigung in positive
+
+a-Richtung.
+
+) )*
+
+loss
+
+is
+
+negative
+
+slope
+
+at a.
+
+) )*
+
+loss
+
+<0
+
+) )*
+
+loss
+
+=0
+
+) )*
+
+loss>0
+
+Upda+t'e(-"F=or+m' -e8l:a66t++lo1ss=
+
+at
+
+-
+
+
+
+·
+
+ a
+
+loss
+
+ ist die Lernrate bzw. Schrittweite. Hier gilt
+
+Quelle: Dürr & Sick
+
+ a
+
+1 loBslsac=kboNard
+
+N
+)+,-)*
+
+ a
+
+yi2 - 2ayixi - 2 · 87.6yi + a2xi2 + 2 · 87.6axi + 87.62
+
+i=1
+
+2 =
+N
+
+N
+
+axi2 - yixi + 87.6xi = 2a · x2 - x · y + 87.6x
+
+27
+
+i=1
+
+7 / 28
+
+WirkEufnfegctdeofr lLeearrnnirnagtreate &
+Quelle: Dürr & Sick
+Learning rate is a hyperparamer. Later, we learn how to optimally choose the hyperparamerers in crossvalidation.
+28 8 / 28
+
+ZweidMimorentshiaonntawloepVarearmluesttefrus nktion
+
+Zoomed in
+
+29 Quelle: Dürr & Sick
+9 / 28
+
+Zw·eidGGriraamddiieeennttnisDspeiesorcpeennntadicluelarr
+
+toGlervealsdientenabstieg
+
+-
+
+6 6+
+
+loss
+
+Optimization
+
+6
+
++'(-" =6,+l'o-ss8
+
+6 6+
+
+loss
+
+- loss
+
+· Gradient Descent Gradient is perpendicular to levels
+
+6
+
+,'("
+
+=
+
+,'
+
+-
+
+8
+
+6,
+
+loss -
+6
+
+6 6+
+
+loss
+
++'(" ,'("
+
+=
+
++' ,'
+
+-8
+
+6+ 66
+
+loss
+
++'("
+
+=at++'1-=866a,+t l-oss
+
+·
+
+ a
+
+loss
+
+In
+
+ge,n'e(r"al=bt,+'1-=8
+
+6
+6b,t
+
+l-oss
+
+·
+
+ b
+
+loss
+
+Slide credit: wikipedia
+
+Quelle: Dürr & Sick
+
+#'("
+
+=+,''#(('"ab"-tt++8=11 lo+,s''s=-
+
+at 8bt
+
+6
+66+-loss30 loss
+
+Der Gradientenabstieg erfolgt
+
+Allgemein:
+
+6,
+
+senkrecht zu den Höhenlinien.
+
+In general
+
+#'(" =t#+'1-=8lotss- loss
+
+Slide credit: wikipedia
+
+30 10 / 28
+
+A potential pitfall
+Gradientenabstieg auf nichtkonvexer Verlustfunktion
+Quelle: Dürr & Sick
+IBn elini ebaersrteigmremsstieomn, lOospstliamndiesrcuapnegsisplrikoebalebmowenl. (konvexe Probleme, z.B. FlionrenaerueraRl neegtrweosrskiso,nit)'ssninotdalobokwall,ebutnsdomgleombaalgeicMhaapxpimenas,iadnednGtirsacdhie, nbtei Daensdceernet nis nOiKc.ht (z.B. neuronale Netze). Der Gradientenabstieg findet 31 immer nur lokale Minima.
+11 / 28
+
+Example
+Multivariate lineare Regression
+Lineares multivariates Modell:
+y^ = w0 · 1 + w1x1 + w2x2 + · · · + wdxd
+Der Schwellwert (Bias) w0 wird oft als b The SgiensgclheriCeebleln: .Mathematical Abstraction
+Interpretation als abstraktes Neuron mit linearer Aktivierungsfunkti9o=n:; + '"  $" + '#  $# +  '$
+z = ; + ')  $) = ; + )  E Activation (many possibilities)
+
+<; +=>< = 1Quel?le:,D+ürr ?& "Si@ckA + ?#B+CDE + ?.F>?<G+G>H
+sales = 1·w0+w1TV+w2Radio+w3Newspaper
+
+Quelle: Dürr & Sick 34
+12 / 28
+
+Geometr3.i2sLcinheareReIgnrestsieonrMpordeelstaandtLieoasnt S:quFariest ei45ner Hyperebene
+
+Loss
+
+Y
+
+MatrixschreibweiDseseig:n Matrix
+
+·· ·· ·
+
+· ·
+·
+
+· ·
+
+· ·
+
+· ·
+····· ··
+
+· ··
+
+··· ·· ·· ····
+
+·
+
+····
+
+· X2
+
+·· · · ·
+
+· ·
+
+·
+
+·
+
+X1
+
+!!
+
+!" !#
+
+=
+
+!$
+
+!  #" = &%
+
+Quelle: Dürr & Sick
+
+mit der Designmatrix X loss = np.mean((y - y_hat)**2) #True sales is y
+
+Loss depends now on 4 parameters ?0, ?", ?#, ?.. Minimization with
+X w = y gradient descent, or analytical solution.
+
+und der Verlustfunktion
+
+URE 3.1. Linear least squares fittingQuweiltleh: HXastie eIRt a2l., 2W00e9 seek the linear
+
+tion of X that minimizes the sum of squared residuals from Y .
+
+MSE(w)
+
+=
+
+1 N
+
+y
+
+-
+
+y2
+
+=
+
+y - X w2
+
+e occupied by the pairs (X, Y ). Note that (3.2) makes no assumptions
+
+ut the valiDdiatysoOf mpotdimel i(e3.r1u);nigt ssipmrpolyblfienmds itshte hbeiestrlivnieearrdfiitmtoenthseional in den Variablen
+. Least squares fitting is intuitively satisfying no matter how the data
+e; the critewri0on, wm1e,aswur2e,swth3e. aLvöersaugenlgaceknotfwfite. der analytisch oder über Gradientenabstieg.
+ow do we minimize (3.2)? Denote by X the N × (p + 1) matrix with
+
+row an input vector (with a 1 in the first position), and similarly let
+
+e the N -vector of outputs in the training set. Then we can write the
+
+13 / 28
+
+Übersicht
+1 Lineare Regression 2 Logistische Regression
+14 / 28
+
+Logistische Regression (Motivation)
+Kreditscoring & logistische Regression 67,7 Mio. Personen und 6 Mio. Unternehmen Anzahl und Art der Kreditaktivitäten Zahlungsausfälle Erfahrungen im Umgang mit Kreditgeschäften
+,,Das verwendete Verfahren wird als ,,logistische Regression" bezeichnet und ist eine fundierte, seit langem praxiserprobte, mathematisch-statistische Methode zur Prognose von Risikowahrscheinlichkeiten."
+Quelle: Constanze Riedinger, Data Analytics
+15 / 28
+
+Logistische Regression
+Erweitert die Idee der linearen Regression auf Situationen, in denen die Zielvariable kategorial ist Wir konzentrieren uns auf binäre Klassifikation
+d. h. Y = 0 oder Y = 1 Ist eine probabilistische Methode und liefert die Wahrscheinlichkeit für Klasse Y = 1
+16 / 28
+
+Logistische Regression(Motivation Fortsetzung)
+Hintergrund: probabilistische Modellierung
+Die Challenger-Raumfähre explodierte 73 Sekunden nach dem Start im Jahr 1986. Eine Dichtung im Booster war defekt.
+17 / 28
+
+Statistik & Challenger-Desaster [Exkurs]
+Auch in den erfolgreichen Flügen steckt Information.
+18 / 28
+
+Modellierung mit logistischer Regression
+Binarisierung: Null-/Eins-Klassifikation Gesucht: p(x) = Pr(Y = 1 | x) Wahrscheinlichkeit für einen O-Ring-Defekt Y = 1 bei gegebener Temperatur X
+Welche Form hat die Kurve? Warum ist p(X ) = b + ax (lineare Regression) ungeeignet?
+19 / 28
+
+Suche nach einer geeigneten Kompressionsfunktion
+Idee der logistischen Regression: Ausgabe der linearen Regression verwenden: z = a · x + b, z  [-, ] und auf [0, 1] komprimieren.
+Aufgabe: Skizzieren Sie eine Funktion, die das leisten könnte.
+Diskutieren Sie mit Ihrem Nachbarn
+20 / 28
+
+Lösung
+
+1 (z) = 1 + e-z
+
+21 / 28
+
+Logistische Regression
+Vorhersage: Ist der O-Ring defekt, in Abhängigkeit von der Temperatur?
+
+Statistisches Modell (logistische Regression): P(Y = 1 | X = x) = (1 + e-(ax+b))-1 = (1 + e-z)-1 = f (x)
+
+z  ] - , [  [0, 1]
+
+22 / 28
+
+Maximum-Likelihood-Prinzip
+
+Lineare Regression minimiert den RMSE Der RMSE der linearen Regression lässt sich als Maximum-Likelihood-Methode auffassen Dies ist eine allgemeine Verlustfunktion
+
+loss = - 1 N
+
+N
+log pmodel(y(i) | x(i); )
+i=1
+
+Wahrscheinlichkeit, die das Modell dem beobachteten Ergebnis yi zuweist
+
+23 / 28
+
+Likelihood: Wahrscheinlichkeit des Trainingssets
+
+Trainingsdaten i = 1, . . . , N : X (i), Y (i)
+
+p1(X )
+
+=
+
+P (Y
+
+=
+
+1
+
+|
+
+X)
+
+=
+
+1 1+e-(0 +1 x )
+
+Wahrscheinlichkeit für Y = 1 bei
+
+gegebenem X
+
+p0(X ) = 1 - p1(X ) Wahrscheinlichkeit für Y = 0 bei gegebenem X
+
+Likelihood (Wahrscheinlichkeit des Trainingssets bei gegebenen Parametern):
+
+L(a, b) =
+
+p1(x(i)) ·
+
+p0 (x (j ) )
+
+ialle Einsen
+
+jalle Nullen
+
+ Diese Wahrscheinlichkeit soll maximiert werden
+
+24 / 28
+
+Maximierung der Likelihood
+Likelihood bzgl. der Parameter maximieren:
+
+L(a, b) =
+
+p1(x(i)) ·
+
+p0 (x (j ) )
+
+ialle Einsen
+
+jalle Nullen
+
+Logarithmus anwenden (Maximum des Logarithmus liegt an derselben Stelle):
+
+-NJ() = L() = L(a, b)
+
+=
+
+log(p1(x(i))) +
+
+log(p0(x(i)))
+
+ialle Einsen
+
+ialle Nullen
+
+=
+
+yi log(p1(x(i))) + (1 - yi) log(p0(x(i)))
+
+ialle Daten
+
+Verlustfunktion (negative Log-Likelihood, Kreuzentropie):
+
+loss = - 1 N
+
+N
+log pmodel(y(i) | x(i); )
+i=1
+
+25 / 28
+
+Anpassen der Parameter
+
+Ergebnis:
+
+loss = - 1 N
+
+N
+log pmodel(y(i) | x(i); )
+i=1
+
+Diese Kurve hängt von den Parametern a, b ab.
+Wähle a und b so, dass die Daten optimal angepasst werden.
+
+26 / 28
+
+Skalierung
+
+Die logistische Regression (und jedes neuronale Netz) hängt von der Skalierung von X ab.
+Es ist ungünstig, wenn verschiedene Spalten von X unterschiedliche Wertebereiche haben
+Trick (z-Transformation, auch: Standardskalierung): Mittelwert subtrahieren und durch Standardabweichung dividieren:
+
+x - x¯ 1
+
+x¯
+
+x  z(x) =
+
+= x-
+
+sdx
+
+sdx
+
+sdx
+
+Beispiel (Klopapier):
+
+27 / 28
+
+Skalierung in Scikit-Learn
+
+Bei Training- und Testset: Skalierer nur auf dem Trainingsset anpassen.
+
+28 / 28
+
+

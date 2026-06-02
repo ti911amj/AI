@@ -1,0 +1,409 @@
+Künstliche Neuronen
+Artficial Intelligence: Vorlesung 7 Prof. Dr. M. O. Franz, Prof. Dr. M. Blaich
+HTWG Konstanz, Fakultät für Informatik
+1 / 27
+
+Übersicht
+1 Maschinelles Lernen 2 Abstrakte Neuronen 3 Training beim überwachten Lernen
+2 / 27
+
+Übersicht
+1 Maschinelles Lernen 2 Abstrakte Neuronen 3 Training beim überwachten Lernen
+3 / 27
+
+Programme programmieren sich selbst
+Maschinelles Lernen: Oberbegriff für die ,,künstliche" bzw. automatische Generierung von Wissen aus Erfahrung. Teilgebiete:
+Klassifikation (von lat. classis, ,,Klasse", und facere, ,,machen") oder Mustererkennung: Zusammenfassen von Objekten zu Klassen. Den Eingangsgrößen werden diskrete Ausgangsgrößen zugewiesen (d.h. die jeweilige Bezeichnung der Klasse). Regression: Ähnlich wie Klassifikation, aber hier werden den Inputwerten kontinuierliche Ausgangsgrößen zugewiesen, d.h. es wird eine Abbildung vom Raum der Eingangsgrößen in einen Ausgangsgrößenraum erlernt. Dichteschätzung: Erlernen der Wahrscheinlichkeitsverteilung von Daten Rangfolgenbestimmung (Ranking): Erlernen einer Abbildung vom Eingangsraum auf ordinale Ausgangsgrößen
+4 / 27
+
+Lernen anhand von Beispielen
+Methode des maschinellen Lernens: Synthese eines Algorithmus oder Modells zur Lösung eines Problems aus Beispielen Überwachtes Lernen: Zu jedem Trainingsbeispiel ist die Klassenzugehörigkeit bekannt. Unüberwachtes Lernen: Klassen müssen über ,,natürliche Gruppen" gefunden werden (Clustering). Halbüberwachtes Lernen: die Klassenzugehörigkeit ist nur für ein paar Trainingsbeispiele bekannt, die anderen müssen sinnvoll eingeordnet werden. Bekräftigungslernen (Reinforcement Learning): Aktionen des Mustererkenners werden nur mit falsch oder richtig bewertet, die Klassenzugehörigkeit wird nicht mitgeteilt.
+5 / 27
+
+Allgemeine Struktur der Daten
+
+Daten-Objekte und deren Attribute
+
+(wie ExceDlieSDheaetetn) liegen
+
+EEiigneVnasrciahAtObaytlbfpettrijseeiocbkifhnutteeeatrennuwncOuehvinbsodeFjreeii(knhäathrsFteunonlrriecmhisvetoineneinse
+
+­
+
+Beispiel: Augenfarbe, Kelchblattbreite,
+etc. Excel-Sheets).
+
+­ Für KlaEsisnifiAzitetrruibngutg(ibotftesauofctheianls
+
+ausgezVeaicrhianbelteesoAdtetrribFuetature (Klassebneaztetriicbhutn)et) ist eine Eine SamEmigelunnscghvaoftneAintetrnibOubtejenkts. beschreibEtineeinSaOmbmjelkutng von ­ DOabtjuemktA,aRtutecrchibo: urIdntdeoinvdiedbrueBusmechis, rpIenieisbltatnezi,nFall,
+Objekt (oft auch Individuum,
+
+Instanz, Fall, Datum, Record
+
+oder Beispiel).
+
+n Objekte
+
+p Features
+
+Sepal.Le Sepal. Petal.Le Petal. Blume Type ngth Width ngth Width
+
+1 setosa
+
+5.1 3.5 1.4 0.2
+
+2 setosa
+
+4.9 3 1.4 0.2
+
+3 virinica
+
+3.3 3.2 1.6 0.5
+
+4 setosa
+......
+
+5.1 3.5 1.4 0.2
+... .........
+
+150 virinica
+
+4.9 3 1.4 0.2
+
+6 / 27
+
+Überwachtes Lernen: Klassifikation
+7 / 27
+
+Überwachtes Lernen: Regression
+8 / 27
+
+Unüberwachtes Lernen
+9 / 27
+
+ÜberwachÜtebseurwnadcBhteeksräufntdigBunekgrsäleftrignuengslernen
+
+Überwachtes Lernen
+
+Reinforcement-Lernen
+
+M.O.Franz
+
+Maschinelles Lernen - Einführung
+
+[S. Dennis, 1997] 6 10 / 27
+
+Übersicht
+1 Maschinelles Lernen 2 Abstrakte Neuronen 3 Training beim überwachten Lernen
+11 / 27
+
+Biological Inspiration
+Biologische Neuronen
+
+Biologische Neuronen besitzen die drei Grundeigenschaften eines Rechenmodells oder Automaten:
+
+Informationsübertragung: Information wird entlang der Dendriten, des Zellkörpers und des Axons elektrotonisch oder als Aktionspotential gerichtet übertragen.
+
+15
+
+[Nvidia]
+
+Informationsverarbeitung: Eingehende Signale werden über die Synapsen verstärkt oder abgeschwächt, wechselwirken auf Dendriten und Zellkörper und erzeugen daraus die ausgehenden Signale.
+
+Informationsspeicherung: Die Anzahl und Übertragungsstärke der Synapsen kann sich permanent verändern und damit Informationen speichern.
+12 / 27
+
+ur computing units.
+
+function g is the addition function.
+
+Abstrakte Neuronen
+
+x1
+
+x1
+
+x2
+
+f
+
+f (x1 , x2 , ..., xn )
+
+x2
+
+gf
+
+f (g(x1 , x2 ,..., xn ))
+
+xn
+
+xn
+
+Fig. 2.4. Evaluation of a function of [nRojaasrg96u] ments Fig. 2.5. Generic computing un[iRtojas 96]
+
+Meist wird die Verrechnung der oirvme afullnyc, thioogInwneecfrvooicermhmr,ptaewuttteieeodtKnrsaayftnltuteoeasnsuchswdenairvorsdgedoreleüeysMlbitysseecibilCrmnlitnup.galllreoeyncphesi­rrgaiPnmliaAStailttisusgif,vsuning.eneeaa.ctfl,wneutoigononurscnenkstssidiogofarnndrnszaieeelrseEovasre.uznTefgsuhieemgsunpponlaedgrletsdethnpears:ondtuhcies,onbleycabui
+
+ent at the DnoiedeVse.räTnhdisermuneagnusntdhat the incoming n aIrngutemgernattsionsfunktion:
+
+duced to aVseirnrgelcehnumngerdicearl value. Therefore two functiEoninagl apnagrsts:igannalienwteigrrdatailosn function
+
+cgomrepduutcgEien(isngxg1tu,ahxnne2igt,nss.s.i.g)nareleduzuzieerint edmie
+
+n
+
+a single valrueeelalwndertthigeeoFuutpnukttioornactivation function this node fta(kxi1n, gx2t,h.a.t. )simngoldeevlalileuret.as its argument.
+
+fFepiigrnuozrdiegue2cne.5snumerischen
+
+Wert
+
+y.
+
+neral structure of the computing units. Usually the inAtekgtriavtiioenrungsfunktion: f (y)
+
+he addition function.
+
+berechnet daraus das
+
+Ausgangssignal.
+
+x1
+
+Künstliche neuronale Netze (ANNs) sind also gerichtete Graphen mit
+
+x2reellwgertigfen Funkfti(og(nx1e,nx2a,.l.s., xKnn))oten.
+
+13 / 27
+
+Was können künstliche neuronale Netze berechnen?
+Aufgrund ihrer Eigenschaft als Rechenmodell stellen künstliche neuronale Netze ein biologisches Berechenbarkeitsparadigma dar. Weitere bekannte Paradigmen sind:
+Logisch-operationales Modell: Turingmaschinen Mathematisches Modell: µ-rekursive Funktionen, Lambda-Kalkül Computermodell: Registermaschine, Random Access Maschine Zelluläre Automaten
+Alle genannten Paradigmen sind gleich mächtig, d.h. mit ihnen können alle intuitiv berechenbaren Probleme gelöst werden. Ob das biologische Paradigma gleich mächtig ist, hängt von der Art der Integrations- und Aktivierungsfunktionen ab und von der Topologie des Netzwerks. Tatsächlich reichen schon einfachste abstrakte Neuronen für eine Turing-Vollständigkeit aus.
+14 / 27
+
+Perzeptron
+
+Perzeptron: einfaches abstraktes Neuronenmodell (1958).
+Integrationsfunktion: gewichtete Summe über alle Inputs xi mit Gewichten wi und Schwellwert w0;
+Aktivierungsfunktion: sgn-Funktion.
+
+[Statworx]
+
+y = sgn
+
+wixi + w0
+
+i
+
+Je nach Art des Inputs können wir die Integrationsfunktion als lineares System betrachten:
+
+1 sind die Inputs zeitverzögerte Versionen des Inputs, so haben wir einen zeitlichen FIR-Filter (s. Vorl. 12);
+2 sind sie verschiedene räumliche Abtastpunkte eines Signals (z.B. Bild), einen räumlichen FIR-Filter.
+15 / 27
+
+Beispiel: Perzeptron als NAND-Gatter
+
+NAND-Gatter
+Das NAND-Gatter ist ein universales Gatter, d.h. man kann daraus alle anderen logischen Funktionen aufbauen, was es wiederum erlaubt, jede berechenbare Funktion aus Perzeptronen zusammenzusetzen.
+Damit sind Netze aus Perzeptronen Turing-vollständig.
+
+Addierer aus NAND-Gattern Addierer aus Perzeptronen
+
+[Nielsen 19] 16 / 27
+
+Sigmoide Neuronen
+Sprungfunktionen als Aktivierungsfunktion führen bei neuronalen Netzen zu instabilem Verhalten: eine kleine Änderung des Inputs kann zum kompletten Umkippen des Netzwerkoutputs führen. Wenn das Netzwerk lernen soll, dann sollten kleine Änderungen am Eingang auch zu kleinen Änderungen am Ausgang führen.
+nearity Erreicht wird dies durch eine differenzierbare Aktivierungsfunktion, z.B.
+
+Sigmoid:
+
+(z)
+
+=
+
+1 1+e-z
+
+Tangens Hyperbolicus: (z) = tanh(z)
+
+dent)
+
+17 / 27
+
+Netzwerktopologie: Feedforward vs. rekurrent motreokt,dhteahateltrhweeistuchlotmtohpfeuttthaaetsikwonhosof ltesaykcneocmphlrpaoucnetiazwtiniiotgnhotihusetwdceoelllma-dype.Atuhfitenrineeldgcausautrnsncidivotesmw.cpeWoudmteoepdjunuotosattuttiponutctaankebne
+
+stopped after a as the result of
+
+certain number of ste the recursive computa
+
+x
+
+g
+
+g(x)
+
+xt f
+
+f (xt , f (xt-1, f ( xt -2 ,...)...)
+
+f
+
+f (g (x))
+
+Fig. 2.2. Function composition [Rojas 96]
+
+Fig. 2.3. Recursive evaluation [Rojas 96]
+
+nedadttdgethheirwifioebesnnydintpe.hetrtwWhtohawbeherholaeeidertncmknetuwsercitwerZdBFzrsohceieeueneoeveydxtnaeegmpiokasncrderuiseeleoncuutefscmiNstpmuotnnnfuicplroreeteyt.duonwtctrmtooehlzaprefalatwtsaiiatrho,eotdneteehnugeevon-rnrweeAwkenioritnteytfrwahvidcnsctoeohhoderrufem,ketit:dGttpahihiensnuebertkttaeeathactrcxeotepmukmpimofihlretpinxpdcooehiuikttrdatataatitccethhankphilaoenteamtieoepndidnls1ocyitdseIacinoin9amaenebtnetpm4mdphigeciuor3tlitesnpeiehmfctstirsurnobtiituifesfethnooaoyrntnasetnidorecitnswtomihW mriuit,moeofaaainncponawmpurrsiusnorqdeptse?ror.rcaeuteseuaaaWraleciTnblvnnrlinmywofieeeetceMKNDRbcbeoouoedeeocpriedreoCseekneddtlnrtuaziuiocnsBisnlleemfrlraaeopfieecrtncghktrorimehidsoameotantnrnicstadpb.vtwts.hneueueTiidd[tttdn2nha.hoäi9uteW eTt9diZdnon]fihae.ennytrelgtrthsinwoketcerrirolhiwsmüreqePtknetuncositeddktede.stweduetgislinai.otertlwohdnIckwnewoheoosuaicupfttprodhidatrnpcibseisyregdesitecdthlclretbeuearseyrcc,rtwoeniimnnanegstupwrupunohtrne
+
+me at each node (for example a time unit). If the arguments for a unit
+
+been transmitDtedieaMt tiomdeetl,liitesrouuntpgutewrfilol lbgetpdroudrucehd at time t + 1.Man muss zusätzlich das
+
+caustrscivoemcpoumtepdutoVautetipornuktectatantkuebnne gastsovtphopenerdeFsauuftltenrokfattcihoeerntraeeicnnunr.suivmebceormopf ustteaptisonan. dZeitverhalten der Neuronen
+
+Alle Berechnung erfolgen ohne
+
+spezifizieren.
+
+xt zeitlichf e Verzögf (extr,uf (nxtg-1e, fn( x.t-2 ,...)...)
+
+In dieser Vorlesung beschränken wir uns einzelne Neuronen und einfache FeedfoFriwg.a2r.3d.-NReectuzrseiv.e evaluation
+
+n this chapter we deal first with networks without cycles, in which the
+
+18 / 27
+
+Übersicht
+1 Maschinelles Lernen 2 Abstrakte Neuronen 3 Training beim überwachten Lernen
+19 / 27
+
+BeispSieuplefrüvrisüedbeLerwaranicnhg:teIms aLgeerCnleasns:ifKiclaatsisoinfikation von Bildern
+
+Image described
+by pixel values "", "#, ... , "$%&
+features
+
+Model !! " with parameters #
+
+Label y is class
+Tiger
+
+Complex models can have millions /
+
+Quelle: Dürr & Sick
+
+Komplexe Modelle haben Mbillllioionsnoefnpabrzawme. tMersilliarden Parameter.
+
+Beim überwachten Lernen ist jeder Input gelabelt, d.h. ein Experte
+
+hat dem Eingangsbild eine korrekte Klassenzugehörigkeit (Label)
+
+zugewiesen.
+
+7
+
+20 / 27
+
+Beispiel: Training eines Klassifikators Supervised Learning: Training (Image Classification)
+
+x
+
+True Class '
+
+Predicted class '&
+
+Tiger
+
+Seal !
+
+Tiger
+Seah orse
+... Typical 1 Mio. Trainingsdata
+
+Tiger "
+Seahorse "
+Training Principle: Parameter are adjusted so that training error is minimal.
+Quelle: Dürr &1S1ick
+
+21 / 27
+
+Training beim überwachten Lernen
+Beim überwachten Lernen sind die Trainingsdaten als Paare {xi, yi}i=1...N aus Trainingsinput xi und zugehörigem Label yi gegeben. Das Verhalten des Modells f wird durch seine Parameter  beschrieben. Das Modell berechnet aus dem Input x die Vorhersage y^:
+y^ = f(x)
+Training bedeutet, dass der Fehler des Modells auf den Trainingsdaten minimiert wird. Der Fehler wird mithilfe einer Verlustfunktion gemessen. Maschinelles Lernen läuft üblicherweise nach folgendem Schema:
+1 Definition eines parametrischen Modells f. 2 Training des Modells auf einem Trainingsdatensatz mithilfe einer
+Verlustfunktion. 3 Nutzung des trainierten Modells zur Vorhersage des Labels auf
+neuen Eingangsdaten.
+22 / 27
+
+CodeI-nBceoidsepiel
+
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(X_train,y_train)
+
+A specific parametric model
+X_train training data e.g. [N,2] y_train lables [N,1] Parameters of the model are optimized to the training data
+
+X_test = np.array([[3, 5]]) model.predict(X_test)
+
+predict on unknown data
+
+In math: '& = !!(")
+
+Quelle1: D5ürr & Sick
+
+23 / 27
+
+· BTreaiisnpinigeDl:aTtarainingsdaten bei der eindimensionalen linearen R­egSryestsoslicioBnlood Pressure (SBP) against age of 33 women
+75 Quelle: Dürr & Sick
+ModeSlysshtooulilsdcphreerdiBctlubtlodorducpkrevsss.uAreltaetreb.ge.i 7353wFhraaut iesna. DgoaosdMguoedsesl?l sollte den 19 Blutdruck für ein gegebenes Alter (hier z.B. 75) möglichst gut vorhersagen.
+24 / 27
+
+Beispiel: Einfaches lineares Regressionsmodell
+Modell: e Model linear regressiy^on= f(x) = fa,b(x) = ax + b
+mit Steigung a und y-Achsenabschnitt b.
+ & + - Simple Model linear regression
+slope intercept · "! = *  & + -
+­ + slope Das Modell kann als einzelnes Neuron mit 2 Inputs und l­ine,ainrtercAepkt tivierungsfunktion betrachtet werden.
+'& = 1  " + 100
+'& = 1  " + 100
+For age=75 '& = 1  75 +F1o0r 0ag=e=17755
+'& = 1  75 + 100 = 175
+25 / 27
+
+BeispTiweol:eGxaemrpaldesenwimthihtighhoahnedmlowunlodssniedrigem Fehler
+
+Bad fit, high loss
+Schlechter Fit, großer Fehler
+
+Good fit, low lQouseslle: Dürr & Sick
+Guter Fit, niedriger Fehler
+22
+26 / 27
+
+Loss on trainings data
+Fehlerfunktion für die lineare Regression
+
+Quelle: Dürr & Sick
+MTyitptliecraelr lqousasdrfaotrisrcehgerreFseshiloern(M(mSEe):an squared error) MSE
+
+1 MSE =
+N
+
+N
+
+(yi - y^i)2 =
+
+1 N
+
+N
+(yi - (axi + b))2
+
+i=1
+
+i=1
+
+27 / 27
+
+
